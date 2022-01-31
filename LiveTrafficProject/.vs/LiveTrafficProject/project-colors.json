@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "42b31902-0f18-48cb-8f46-24a792c7a3cd": {
+      "ProjectGuid": "42b31902-0f18-48cb-8f46-24a792c7a3cd",
+      "DisplayName": "LiveTrafficProject",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

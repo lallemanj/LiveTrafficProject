@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using LiveTrafficProject.Data;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<LiveTrafficProjectContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LiveTrafficProjectContext")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

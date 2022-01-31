@@ -6,7 +6,10 @@ namespace LiveTrafficProject.Models
 {
     public class Incident
     {
+        public int Id { get; set; }
+
         [JsonProperty("type")]
+        [Display(Name = "Type")]
         public string? type { get; set; }
 
         [JsonProperty("properties")]
@@ -18,6 +21,7 @@ namespace LiveTrafficProject.Models
         public int propertiesId { get; set; }
 
         [JsonProperty("geometry")]
+        [Display(Name = "Geometry")]
         public Geometry? geometry { get; set; }
     }
 }

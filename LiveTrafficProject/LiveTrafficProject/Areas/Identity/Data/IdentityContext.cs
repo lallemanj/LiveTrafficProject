@@ -11,6 +11,9 @@ public class IdentityContext : IdentityDbContext<LiveTrafficProjectUser>
         : base(options)
     {
     }
+    public DbSet<LiveTrafficProject.Models.Incident> Incident { get; set; }
+
+    public DbSet<LiveTrafficProject.Models.Properties> Properties { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

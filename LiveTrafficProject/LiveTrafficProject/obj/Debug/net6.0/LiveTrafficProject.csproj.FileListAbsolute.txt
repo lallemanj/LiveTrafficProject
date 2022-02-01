@@ -249,7 +249,6 @@ C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTr
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.csproj.AssemblyReference.cache
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.AssemblyInfoInputs.cache
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.AssemblyInfo.cs

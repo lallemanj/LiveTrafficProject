@@ -13,9 +13,9 @@ namespace LiveTrafficProject.Controllers
 {
     public class IncidentsController : Controller
     {
-        private readonly LiveTrafficProjectContext _context;
+        private readonly IdentityContext _context;
 
-        public IncidentsController(LiveTrafficProjectContext context)
+        public IncidentsController(IdentityContext context)
         {
             _context = context;
         }

@@ -6,13 +6,14 @@ using Microsoft.Extensions.Configuration;
 using LiveTrafficProject.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("LiveTrafficProjectContext");
 
-builder.Services.AddDbContext<LiveTrafficProjectContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LiveTrafficProjectContext")));
-builder.Services.AddDefaultIdentity<LiveTrafficProjectUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<IdentityContext>();builder.Services.AddDbContext<IdentityContext>(options =>
+var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection");
+builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<LiveTrafficProjectUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<IdentityContext>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

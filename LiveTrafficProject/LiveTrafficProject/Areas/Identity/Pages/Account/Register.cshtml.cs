@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using LiveTrafficProject.Data;
 
 namespace LiveTrafficProject.Areas.Identity.Pages.Account
 {
@@ -30,13 +31,15 @@ namespace LiveTrafficProject.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<LiveTrafficProjectUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IdentityContext _dbContext;
 
         public RegisterModel(
             UserManager<LiveTrafficProjectUser> userManager,
             IUserStore<LiveTrafficProjectUser> userStore,
             SignInManager<LiveTrafficProjectUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IdentityContext dbContext)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +47,7 @@ namespace LiveTrafficProject.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _dbContext = dbContext;
         }
 
         /// <summary>
@@ -123,6 +127,8 @@ namespace LiveTrafficProject.Areas.Identity.Pages.Account
                 var user = CreateUser();
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
+                user.LanguageId = Thread.CurrentThread.CurrentCulture.ToString().Substring(0, 2);
+                user.Language = _dbContext.Language.FirstOrDefault(l => l.Id == user.LanguageId);
 
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.UserName, CancellationToken.None);

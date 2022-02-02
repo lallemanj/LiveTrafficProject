@@ -7,7 +7,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using LiveTrafficProject.Areas.Identity.Data;
+using LiveTrafficProject.Data;
+using LiveTrafficProject.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -17,13 +20,16 @@ namespace LiveTrafficProject.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<LiveTrafficProjectUser> _userManager;
         private readonly SignInManager<LiveTrafficProjectUser> _signInManager;
+        private readonly IdentityContext _dbContext;
 
         public IndexModel(
             UserManager<LiveTrafficProjectUser> userManager,
-            SignInManager<LiveTrafficProjectUser> signInManager)
+            SignInManager<LiveTrafficProjectUser> signInManager,
+            IdentityContext dbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _dbContext = dbContext;
         }
 
         /// <summary>
@@ -63,6 +69,9 @@ namespace LiveTrafficProject.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Display(Name = "Language")]
+            public string LanguageId { get; set; }
         }
 
         private async Task LoadAsync(LiveTrafficProjectUser user)
@@ -76,13 +85,17 @@ namespace LiveTrafficProject.Areas.Identity.Pages.Account.Manage
             {
                 PhoneNumber = phoneNumber,
                 LastName = user.LastName,
-                FirstName = user.FirstName
+                FirstName = user.FirstName,
+                LanguageId = user.LanguageId
             };
+            ViewData["Languages"] = Language.SystemLanguages;
+            ViewData["LanguageId"] = user.LanguageId;
         }
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var user = await _userManager.GetUserAsync(User);
+            //var user = await _userManager.GetUserAsync(User);
+            LiveTrafficProjectUser user = _dbContext.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -106,11 +119,22 @@ namespace LiveTrafficProject.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            if (Input.LastName != user.LastName || Input.FirstName != user.FirstName)
+            if (user.FirstName != Input.FirstName
+               || user.LastName != Input.LastName
+               || user.LanguageId != Input.LanguageId)
             {
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
-                _userManager.UpdateAsync(user);
+                user.Language = _dbContext.Language.FirstOrDefault(l => l.Id == Input.LanguageId);
+                user.LanguageId = Input.LanguageId;
+                _dbContext.Update(user);
+                _dbContext.SaveChanges();
+
+                // Update the language/culture
+                Response.Cookies.Append(
+                    CookieRequestCultureProvider.DefaultCookieName,
+                    CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(Input.LanguageId)),
+                    new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) });
             }
 
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);

@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,12 +29,22 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Incidents" asp-action="Index">@Localizer["Incidenten"]</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Properties" asp-action="Index">@Localizer["Eigenschappen"]</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                         }
                     </ul>
-                    <partial name="_Language" />
                     <partial name="_LoginPartial" />
+                     @if (!User.Identity.IsAuthenticated)
+                    {
+                    <partial name="_Language" />
+                    
+                    }
                 </div>
             </div>
         </nav>

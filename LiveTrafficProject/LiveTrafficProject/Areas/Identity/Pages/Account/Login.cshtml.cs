@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using LiveTrafficProject.Data;
+using Microsoft.AspNetCore.Localization;
 
 namespace LiveTrafficProject.Areas.Identity.Pages.Account
 {
@@ -118,6 +119,11 @@ namespace LiveTrafficProject.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    string languageId = _dbContext.Users.FirstOrDefault(u => u.UserName == Input.UserName).LanguageId;
+                    Response.Cookies.Append(
+                        CookieRequestCultureProvider.DefaultCookieName,
+                        CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(languageId)),
+                        new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) });
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

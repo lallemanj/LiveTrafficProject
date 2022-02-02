@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LiveTrafficProject.Data;
 using LiveTrafficProject.Models;
+using Microsoft.AspNetCore.Localization;
+using LiveTrafficProject.Areas.Identity.Data;
 
 namespace LiveTrafficProject.Controllers
 {
@@ -18,6 +20,31 @@ namespace LiveTrafficProject.Controllers
         public LanguagesController(IdentityContext context)
         {
             _context = context;
+        }
+
+        public IActionResult ChangeLanguage(string id, string returnUrl)
+        {
+            string culture = Thread.CurrentThread.CurrentCulture.ToString();
+            culture = id + culture.Substring(2);  // bv. als de cookie "en-US" bevat, en Nederlands wordt gekozen: --> "nl-US"
+
+            if (culture.Length != 5) culture = id;
+
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) });
+
+            //if (_user.Id != "-")
+            //{
+            //    _user.LanguageId = id;
+            //    Language language = _context.Language.FirstOrDefault(l => l.Id == id);
+            //    _user.Language = language;
+            //    LiveTrafficProjectUser user = _context.Users.FirstOrDefault(u => u.Id == _user.Id);
+            //    user.Language = language;
+            //    _context.SaveChanges();
+            //}
+
+            return LocalRedirect(returnUrl);
         }
 
         // GET: Languages
@@ -150,5 +177,6 @@ namespace LiveTrafficProject.Controllers
         {
             return _context.Language.Any(e => e.Id == id);
         }
+
     }
 }

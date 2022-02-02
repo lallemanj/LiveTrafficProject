@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using LiveTrafficProject.Models;
 
 namespace LiveTrafficProject.Data;
 
@@ -22,4 +23,6 @@ public class IdentityContext : IdentityDbContext<LiveTrafficProjectUser>
         // For example, you can rename the ASP.NET Identity table names and more.
         // Add your customizations after calling base.OnModelCreating(builder);
     }
+
+    public DbSet<LiveTrafficProject.Models.Language> Language { get; set; }
 }

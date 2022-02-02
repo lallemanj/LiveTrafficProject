@@ -7,6 +7,7 @@ using LiveTrafficProject.Areas.Identity.Data;
 using LiveTrafficProject.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using NETCore.MailKit.Infrastructure.Internal;
+using LiveTrafficProject.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,10 +16,18 @@ builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddDefaultIdentity<LiveTrafficProjectUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<IdentityContext>();
+
+
+builder.Services.AddLocalization(option => option.ResourcesPath = "Localizing");
+builder.Services.AddMvc()
+       .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+       .AddDataAnnotationsLocalization();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 
 builder.Services.AddTransient<IEmailSender, MailKitEmailSender>();
 builder.Services.Configure<MailKitOptions>(options =>
@@ -32,6 +41,11 @@ builder.Services.Configure<MailKitOptions>(options =>
 
     // Set it to TRUE to enable ssl or tls, FALSE otherwise
     options.Security = false;  // true zet ssl or tls aan
+});
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequiredLength = 8;
 });
 
 var app = builder.Build();
@@ -54,8 +68,15 @@ app.MapControllerRoute(
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    SeedDatacontext.Initialize(services);
+    var userManager = services.GetRequiredService<UserManager<LiveTrafficProjectUser>>();
+    SeedDatacontext.Initialize(services, userManager);
 }
+
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture("nl-BE")
+     .AddSupportedCultures(Language.SupportedLanguages)
+     .AddSupportedUICultures(Language.SupportedLanguages);
+
+app.UseRequestLocalization(localizationOptions);
 
 app.MapRazorPages();
 

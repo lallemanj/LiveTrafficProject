@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using LiveTrafficProject.Data;
 
 namespace LiveTrafficProject.Areas.Identity.Pages.Account
 {
@@ -22,11 +23,13 @@ namespace LiveTrafficProject.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<LiveTrafficProjectUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IdentityContext _dbContext;
 
-        public LoginModel(SignInManager<LiveTrafficProjectUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<LiveTrafficProjectUser> signInManager, ILogger<LoginModel> logger, IdentityContext dbContext)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _dbContext = dbContext;
         }
 
         /// <summary>

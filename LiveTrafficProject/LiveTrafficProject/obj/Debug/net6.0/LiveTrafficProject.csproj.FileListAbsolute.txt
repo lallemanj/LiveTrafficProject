@@ -267,3 +267,4 @@ C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTr
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\ref\LiveTrafficProject.dll
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.pdb
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.genruntimeconfig.cache
+C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.csproj.AssemblyReference.cache

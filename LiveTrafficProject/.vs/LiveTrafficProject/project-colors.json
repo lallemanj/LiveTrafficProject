@@ -5,6 +5,11 @@
       "ProjectGuid": "42b31902-0f18-48cb-8f46-24a792c7a3cd",
       "DisplayName": "LiveTrafficProject",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 1

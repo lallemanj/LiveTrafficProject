@@ -14,6 +14,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.1",
+          "Microsoft.jQuery.Unobtrusive.Ajax": "3.2.6",
           "NETCore.MailKit": "2.0.3"
         },
         "runtime": {
@@ -28,6 +29,7 @@
           }
         }
       },
+      "jQuery/1.8.0": {},
       "MailKit/2.6.0": {
         "dependencies": {
           "MimeKit": "2.6.0",
@@ -1144,6 +1146,11 @@
             "assemblyVersion": "6.8.0.0",
             "fileVersion": "6.8.0.11012"
           }
+        }
+      },
+      "Microsoft.jQuery.Unobtrusive.Ajax/3.2.6": {
+        "dependencies": {
+          "jQuery": "1.8.0"
         }
       },
       "Microsoft.NET.StringTools/1.0.0": {
@@ -2434,6 +2441,13 @@
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
     },
+    "jQuery/1.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-laDFQRJrIRHT0Z0GVYklMt3bE0iu0MZFJwHwg21kt3SHb7Bj8TdNiM3K+ZdK1DzB8ZxKy8z7NkJvwMas+dmHBw==",
+      "path": "jquery/1.8.0",
+      "hashPath": "jquery.1.8.0.nupkg.sha512"
+    },
     "MailKit/2.6.0": {
       "type": "package",
       "serviceable": true,
@@ -2846,6 +2860,13 @@
       "sha512": "sha512-gTqzsGcmD13HgtNePPcuVHZ/NXWmyV+InJgalW/FhWpII1D7V1k0obIseGlWMeA4G+tZfeGMfXr0klnWbMR/mQ==",
       "path": "microsoft.identitymodel.tokens/6.8.0",
       "hashPath": "microsoft.identitymodel.tokens.6.8.0.nupkg.sha512"
+    },
+    "Microsoft.jQuery.Unobtrusive.Ajax/3.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-udg7ZBszgqxloQ+ShJRONKQAzPnJIlUhKZB+AIvZdKh7CDc5Nms69T9X0hN5i+NqMmQE6njkzdCcEb16lPdJTw==",
+      "path": "microsoft.jquery.unobtrusive.ajax/3.2.6",
+      "hashPath": "microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512"
     },
     "Microsoft.NET.StringTools/1.0.0": {
       "type": "package",

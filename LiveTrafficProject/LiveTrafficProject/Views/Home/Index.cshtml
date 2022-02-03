@@ -1,7 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<span id="spanMsg"></span>
 
-<div class="text-center">
- 
-</div>
+<script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        val1 = 5;
+        val2 = 2;
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Add")",
+            data: {number1: val1, number2: val2},
+            dataType: "Text",
+            success:function(msg) {
+                document.getElementById("spanMsg").textConten = "Sum= " + msg;
+            },
+            error: function(req, status, error){
+                document.getElementById("spanMsg").textConten= error;
+
+            }
+        })
+    });
+</script>

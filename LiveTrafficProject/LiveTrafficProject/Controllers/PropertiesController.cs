@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using LiveTrafficProject.Data;
 using LiveTrafficProject.Models;
 using LiveTrafficProject.Services;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace LiveTrafficProject.Controllers
 {
@@ -21,8 +23,23 @@ namespace LiveTrafficProject.Controllers
         }
 
         // GET: Properties
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? traffic)
         {
+            if (traffic != null)
+            {
+
+                using (WebClient web = new WebClient())
+                {
+                    string url = string.Format("https://api.tomtom.com/traffic/services/5/incidentDetails?bbox=4.8854592519716675%2C52.36934334773164%2C4.897883244144765%2C52.37496348620152&fields=%7Bincidents%7Btype%2Cgeometry%7Btype%2Ccoordinates%7D%2Cproperties%7Bid%2CiconCategory%2CmagnitudeOfDelay%2Cevents%7Bdescription%2Ccode%7D%2CstartTime%2CendTime%2Cfrom%2Cto%2Clength%2Cdelay%2CroadNumbers%2CtimeValidity%2Caci%7BprobabilityOfOccurrence%2CnumberOfReports%2ClastReportTime%7D%2Ctmc%7BcountryCode%2CtableNumber%2CtableVersion%2Cdirection%2Cpoints%7Blocation%2Coffset%7D%7D%7D%7D%7D&language=en-GB&categoryFilter=0%2C1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C14&timeValidityFilter=present%2Cfuture&key=hIQ7sERCrsAIdaBcD4I2inoY9sFjc7ms");
+                    var json = web.DownloadString(url);
+                    Root info = JsonConvert.DeserializeObject<Root>(json);
+                    //IList<Root> incidents = new List<Root>();
+                    //ViewData["traffics"] = incidents;
+                    ViewBag.traffic = info;
+                    //traffic = info.incidents[0].inci
+                    Console.WriteLine(info);
+                }
+            }
             return View(await _context.Properties.ToListAsync());
         }
 

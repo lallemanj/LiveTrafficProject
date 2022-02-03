@@ -15,12 +15,21 @@ namespace LiveTrafficProject.Controllers
         public HomeController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger)
             : base(context, httpContextAccessor, logger)
         {
+            client = new HttpClient();
+            client.BaseAddress = baseAddress;
         }
+
+        Uri baseAddress = new Uri("http://localhost:5209/api");
+        HttpClient client;
 
         public IActionResult Index()
         {
-            
-                    return View();
+            HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/traffic").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+            }
+            return View();
         }
 
         public IActionResult Privacy()

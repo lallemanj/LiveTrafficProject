@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Rk70f/fA7HSInZnvpYTfgRdEfYpgWMuJqKyFxTSCOXL74AdbJkcDXzSB8EQd27LTUKBvUhrr/OhMIF5l5Mrq1g==",
+  "dgSpecHash": "ZuclxbN81LrHQf68S+ictHbjU+kMH+ebwju9l/M9H+X6onff0raWyWqrdN5kxiLt7XYqZSrphaRMdBmcQXyjCQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Gebruiker\\Documents\\GitHub\\LiveTrafficProject\\LiveTrafficProject\\LiveTrafficProject\\LiveTrafficProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gebruiker\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Gebruiker\\.nuget\\packages\\jquery\\1.8.0\\jquery.1.8.0.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\mailkit\\2.6.0\\mailkit.2.6.0.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
@@ -64,6 +65,7 @@
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.8.0\\microsoft.identitymodel.protocols.6.8.0.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.8.0\\microsoft.identitymodel.protocols.openidconnect.6.8.0.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.8.0\\microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
+    "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.jquery.unobtrusive.ajax\\3.2.6\\microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.net.stringtools\\1.0.0\\microsoft.net.stringtools.1.0.0.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

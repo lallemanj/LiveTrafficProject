@@ -1,21 +1,26 @@
-﻿using LiveTrafficProject.Models;
+﻿using LiveTrafficProject.Areas.Identity.Data;
+using LiveTrafficProject.Data;
+using LiveTrafficProject.Models;
+using LiveTrafficProject.Services;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net;
+using static LiveTrafficProject.Models.Root;
 
 namespace LiveTrafficProject.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ApplicationController
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger)
+            : base(context, httpContextAccessor, logger)
         {
-            _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            
+                    return View();
         }
 
         public IActionResult Privacy()

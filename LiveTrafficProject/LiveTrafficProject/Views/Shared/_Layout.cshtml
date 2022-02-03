@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization
+﻿@using LiveTrafficProject.Services
+@using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
 
@@ -12,6 +13,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LiveTrafficProject.styles.css" asp-append-version="true" />
 </head>
+@*@{
+    // Haal de huidige ApplicationUser op, m.i.v. de groepen
+    // Gebruik hiervoor de Middleware toegevoegde SessionUser klasse
+    LiveTrafficProject.Areas.Identity.Data.LiveTrafficProjectUser _user = SessionUser.GetUser(User.Identity.Name);
+}*@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -27,6 +33,9 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                              <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Languages" asp-action="Index">Talen</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Incidents" asp-action="Index">@Localizer["Incidenten"]</a>

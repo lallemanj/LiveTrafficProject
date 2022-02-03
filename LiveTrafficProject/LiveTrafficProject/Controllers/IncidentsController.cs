@@ -8,21 +8,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LiveTrafficProject.Data;
 using LiveTrafficProject.Models;
+using System.Net;
+using Newtonsoft.Json;
+using LiveTrafficProject.Areas.Identity.Data;
 
 namespace LiveTrafficProject.Controllers
 {
-    public class IncidentsController : Controller
+    public class IncidentsController : ApplicationController
     {
-        private readonly IdentityContext _context;
+        public string APIKey = "hIQ7sERCrsAIdaBcD4I2inoY9sFjc7ms";
 
-        public IncidentsController(IdentityContext context)
+        public IncidentsController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger)
+            : base(context, httpContextAccessor, logger)
         {
-            _context = context;
+            
         }
 
         // GET: Incidents
         public async Task<IActionResult> Index()
         {
+            LiveTrafficProjectUser user = _user;
             var liveTrafficProjectContext = _context.Incident.Include(i => i.properties);
             return View(await liveTrafficProjectContext.ToListAsync());
         }

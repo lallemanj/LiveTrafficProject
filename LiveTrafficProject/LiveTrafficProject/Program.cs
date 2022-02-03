@@ -26,6 +26,7 @@ builder.Services.AddMvc()
        .AddDataAnnotationsLocalization();
 
 // Add services to the container.
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 
@@ -81,5 +82,6 @@ var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture("nl
 app.UseRequestLocalization(localizationOptions);
 
 app.MapRazorPages();
+app.UseMiddleware<SessionUser>();
 
 app.Run();

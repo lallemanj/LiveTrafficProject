@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LiveTrafficProject.Models
 {
@@ -13,6 +14,7 @@ namespace LiveTrafficProject.Models
 
         [JsonProperty("coordinates")]
         [Display(Name = "Coordinates")]
-        public double? Coordinates { get; set; }
+        [NotMapped]
+        public List<List<double>>? Coordinates { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace LiveTrafficProject.Models
     public class Properties
     { 
      [JsonProperty("id")]
-    public int Id { get; set; }
+    public string Id { get; set; }
 
     [JsonProperty("iconCategory")]
         [Display(Name = "Category")]

@@ -8,16 +8,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LiveTrafficProject.Data;
 using LiveTrafficProject.Models;
+using LiveTrafficProject.Services;
 
 namespace LiveTrafficProject.Controllers
 {
-    public class PropertiesController : Controller
+    public class PropertiesController : ApplicationController
     {
-        private readonly IdentityContext _context;
-
-        public PropertiesController(IdentityContext context)
+        public PropertiesController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger)
+           : base(context, httpContextAccessor, logger)
         {
-            _context = context;
+
         }
 
         // GET: Properties
@@ -27,7 +27,7 @@ namespace LiveTrafficProject.Controllers
         }
 
         // GET: Properties/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -67,7 +67,7 @@ namespace LiveTrafficProject.Controllers
         }
 
         // GET: Properties/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -87,7 +87,7 @@ namespace LiveTrafficProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IconCategory,MagnitudeOfDelay,StartTime,EndTime,From,To,Length,Delay,TimeValidity")] Properties properties)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,IconCategory,MagnitudeOfDelay,StartTime,EndTime,From,To,Length,Delay,TimeValidity")] Properties properties)
         {
             if (id != properties.Id)
             {
@@ -118,7 +118,7 @@ namespace LiveTrafficProject.Controllers
         }
 
         // GET: Properties/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -138,7 +138,7 @@ namespace LiveTrafficProject.Controllers
         // POST: Properties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var properties = await _context.Properties.FindAsync(id);
             _context.Properties.Remove(properties);
@@ -146,7 +146,7 @@ namespace LiveTrafficProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PropertiesExists(int id)
+        private bool PropertiesExists(string id)
         {
             return _context.Properties.Any(e => e.Id == id);
         }

@@ -53,7 +53,48 @@
                 {
                     <tr>
                             <td>
-                            @item.properties.IconCategory
+                           @switch( @item.properties.IconCategory)
+                    {
+                        case 0:
+                            <p>Unknow</p>
+                            break;
+                        case 1:
+                           <p>Accident</p>
+                            break;
+                        case 2:
+                           <p>Fog</p>
+                            break;
+                        case 3:
+                           <p>DangerousConditions</p>
+                            break;
+                        case 4:
+                           <p>Rain</p>
+                            break;
+                        case 5:
+                           <p>Ice</p>
+                            break;
+                        case 6:
+                           <p>Jam</p>
+                            break;
+                        case 7:
+                           <p>LaneClosed</p>
+                            break;
+                        case 8:
+                           <p>Roadclosed</p>
+                            break;
+                        case 9:
+                           <p>RoadWorks</p>
+                            break;
+                        case 10:
+                           <p>Wind</p>
+                            break;
+                        case 11:
+                           <p>Flooding</p>
+                            break;
+                        case 14:
+                           <p>BrokenDownVehicle</p>
+                            break;
+                    }
                            
                             </td>
                             <td>

@@ -25,4 +25,6 @@ public class IdentityContext : IdentityDbContext<LiveTrafficProjectUser>
     }
 
     public DbSet<LiveTrafficProject.Models.Language> Language { get; set; }
+
+    public DbSet<LiveTrafficProject.Models.Event> Event { get; set; }
 }

@@ -8,24 +8,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LiveTrafficProject.Data;
 using LiveTrafficProject.Models;
-using LiveTrafficProject.Services;
 using System.Net;
 using Newtonsoft.Json;
 
 namespace LiveTrafficProject.Controllers
 {
-    public class PropertiesController : ApplicationController
+    public class EventsController : ApplicationController
     {
-        public PropertiesController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger)
+
+        public EventsController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger)
            : base(context, httpContextAccessor, logger)
         {
 
         }
 
-        // GET: Properties
-        public async Task<IActionResult> Index(string? traffic)
+        // GET: Events
+        public async Task<IActionResult> Index(string? traffic1)
         {
-            if (traffic != null)
+            if (traffic1 != null)
             {
 
                 using (WebClient web = new WebClient())
@@ -35,78 +35,78 @@ namespace LiveTrafficProject.Controllers
                     Root info = JsonConvert.DeserializeObject<Root>(json);
                     //IList<Root> incidents = new List<Root>();
                     //ViewData["traffics"] = incidents;
-                    ViewBag.traffic = info;
+                    ViewBag.traffic1 = info;
                     //traffic = info.incidents[0].properties.Events[0].Description
                     Console.WriteLine(info);
                 }
             }
-            return View(await _context.Properties.ToListAsync());
+            return View(await _context.Event.ToListAsync());
         }
 
-        // GET: Properties/Details/5
-        public async Task<IActionResult> Details(string id)
+        // GET: Events/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var properties = await _context.Properties
+            var @event = await _context.Event
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (properties == null)
+            if (@event == null)
             {
                 return NotFound();
             }
 
-            return View(properties);
+            return View(@event);
         }
 
-        // GET: Properties/Create
+        // GET: Events/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Properties/Create
+        // POST: Events/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IconCategory,MagnitudeOfDelay,StartTime,EndTime,From,To,Length,Delay,TimeValidity")] Properties properties)
+        public async Task<IActionResult> Create([Bind("Id,Code,Description")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(properties);
+                _context.Add(@event);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(properties);
+            return View(@event);
         }
 
-        // GET: Properties/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: Events/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var properties = await _context.Properties.FindAsync(id);
-            if (properties == null)
+            var @event = await _context.Event.FindAsync(id);
+            if (@event == null)
             {
                 return NotFound();
             }
-            return View(properties);
+            return View(@event);
         }
 
-        // POST: Properties/Edit/5
+        // POST: Events/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,IconCategory,MagnitudeOfDelay,StartTime,EndTime,From,To,Length,Delay,TimeValidity")] Properties properties)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Description")] Event @event)
         {
-            if (id != properties.Id)
+            if (id != @event.Id)
             {
                 return NotFound();
             }
@@ -115,12 +115,12 @@ namespace LiveTrafficProject.Controllers
             {
                 try
                 {
-                    _context.Update(properties);
+                    _context.Update(@event);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PropertiesExists(properties.Id))
+                    if (!EventExists(@event.Id))
                     {
                         return NotFound();
                     }
@@ -131,41 +131,41 @@ namespace LiveTrafficProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(properties);
+            return View(@event);
         }
 
-        // GET: Properties/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: Events/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var properties = await _context.Properties
+            var @event = await _context.Event
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (properties == null)
+            if (@event == null)
             {
                 return NotFound();
             }
 
-            return View(properties);
+            return View(@event);
         }
 
-        // POST: Properties/Delete/5
+        // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var properties = await _context.Properties.FindAsync(id);
-            _context.Properties.Remove(properties);
+            var @event = await _context.Event.FindAsync(id);
+            _context.Event.Remove(@event);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PropertiesExists(string id)
+        private bool EventExists(int id)
         {
-            return _context.Properties.Any(e => e.Id == id);
+            return _context.Event.Any(e => e.Id == id);
         }
     }
 }

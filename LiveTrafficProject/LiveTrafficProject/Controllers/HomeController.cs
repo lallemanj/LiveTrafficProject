@@ -8,6 +8,7 @@ using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net;
+using System.Text;
 using static LiveTrafficProject.Models.Root;
 
 namespace LiveTrafficProject.Controllers
@@ -25,7 +26,6 @@ namespace LiveTrafficProject.Controllers
 
         public IActionResult Index()
         {
- 
             return View();
         }
 

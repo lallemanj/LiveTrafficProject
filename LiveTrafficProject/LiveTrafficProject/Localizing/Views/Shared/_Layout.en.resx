@@ -123,4 +123,7 @@
   <data name="Evenementen" xml:space="preserve">
     <value>Events</value>
   </data>
+  <data name="Taalkeuze" xml:space="preserve">
+    <value>Language selection</value>
+  </data>
 </root>

@@ -292,3 +292,4 @@ C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTr
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.Localizing.Areas.Identity.Pages.Account.Manage._ManageNav.en.resources
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.Localizing.Areas.Identity.Pages.Account.Login.en.resources
 C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.Localizing.Areas.Identity.Pages.Account.Register.fr.resources
+C:\Users\Gebruiker\Documents\GitHub\LiveTrafficProject\LiveTrafficProject\LiveTrafficProject\obj\Debug\net6.0\LiveTrafficProject.Localizing.Areas.Identity.Pages.Account.Register.en.resources

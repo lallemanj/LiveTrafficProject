@@ -39,6 +39,26 @@ namespace LiveTrafficProject.Data
                    
                 }
 
+                if (!context.Event.Any())
+                {
+                    context.Event.AddRange(
+                        new Event { Code = 6, Description = "Car Accident"},
+                        new Event { Code = 7, Description = "Bad Weather" },
+                        new Event { Code = 8, Description = "Flooding" }
+                        );
+                    context.SaveChanges();
+
+                }
+
+                if (!context.Properties.Any())
+                {
+                    context.Properties.AddRange(
+                        new Properties { Id = "20", IconCategory = 5, MagnitudeOfDelay = 4, StartTime = DateTime.Now, EndTime = DateTime.Now, From = "Molenstraat 10", To = "Helderlaan 6", Length = 200, Delay = 0, TimeValidity = "present" }
+                        );
+                    context.SaveChanges();
+
+                }
+
 
                 if (!context.Roles.Any())
                 {

@@ -2,6 +2,7 @@
 using LiveTrafficProject.Data;
 using LiveTrafficProject.Models;
 using LiveTrafficProject.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -13,6 +14,7 @@ using static LiveTrafficProject.Models.Root;
 
 namespace LiveTrafficProject.Controllers
 {
+    [Authorize]
     public class HomeController : ApplicationController
     {
         private readonly IStringLocalizer<HomeController> _localizer;

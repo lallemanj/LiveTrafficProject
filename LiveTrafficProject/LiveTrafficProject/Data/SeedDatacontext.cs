@@ -26,40 +26,34 @@ namespace LiveTrafficProject.Data
                     );
                     context.SaveChanges();
                 }
-                LiveTrafficProjectUser user = null;
+
+                LiveTrafficProjectUser dummy = null;
+                LiveTrafficProjectUser dummy2 = null;
 
                 if (!context.Users.Any())
                 {
-                    LiveTrafficProjectUser dummy = new LiveTrafficProjectUser { Id = "-", FirstName = "-", LastName = "-", UserName = "-", Email = "?@?.?", LanguageId = "-" };
+                    dummy = new LiveTrafficProjectUser { FirstName = "Admin", LastName = "Admin", UserName = "Admin", Email = "admin@traffic.be", LanguageId = "nl", EmailConfirmed = true};
+                    userManager.CreateAsync(dummy, "@Admin12345");
                     context.Users.Add(dummy);
                     context.SaveChanges();
-                    user = new LiveTrafficProjectUser
-                    {
-                        FirstName = "System",
-                        LastName = "Administrator",
-                        UserName = "Admin",
-                        Email = "System.Administrator@traffic.be",
-                        LanguageId = "nl",
-                        EmailConfirmed = true
-                    };
-                    userManager.CreateAsync(user, "Abc!12345");
+                   
                 }
+
 
                 if (!context.Roles.Any())
                 {
                     context.Roles.AddRange(
                         new IdentityRole { Id = "User", Name = "User", NormalizedName = "user" },
-                        new IdentityRole { Id = "SystemAdministrator", Name = "SystemAdmninistrator", NormalizedName = "systemadministrator" },
-                        new IdentityRole { Id = "UserAdministrator", Name = "UserAdministrator", NormalizedName = "useradministrator" });
+                        new IdentityRole { Id = "Admin", Name = "Admin", NormalizedName = "admin" }
+                        );
                     context.SaveChanges();
                 }
 
-                //if (user != null)
+                //if (dummy != null)
                 //{
                 //    context.UserRoles.AddRange(
-                //        new IdentityUserRole<string> { UserId = user.Id, RoleId = "UserAdministrator" },
-                //        new IdentityUserRole<string> { UserId = user.Id, RoleId = "SystemAdministrator" },
-                //        new IdentityUserRole<string> { UserId = user.Id, RoleId = "User" });
+                //        new IdentityUserRole<string> { UserId = dummy.Id, RoleId = "Admin" }
+                //        );
                 //    context.SaveChanges();
                 //}
 

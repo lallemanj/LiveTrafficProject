@@ -2,17 +2,15 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = @Localizer["Verkeersincidenten live"];
 }
 
-<h1>Index</h1>
+<h1>@Localizer["Verkeersincidenten live"]</h1>
   <form method = "get" asp-action="Index" name ="eerste">
     <input  class="form-control me-2" type="text" id ="traffic" placeholder="Traffic" aria-label="Traffic" name="traffic" value = "Traffic">
-    <button name="button"  value="trafficBtn"  id ="traffic"  class="btn btn-outline-success"  type="submit" >Search</button>
+    <button name="button"  value="trafficBtn"  id ="traffic"  class="btn btn-outline-success"  type="submit" >@Localizer["Verkeersincidenten live zoeken"]</button>
     </form>
-<p>
-    <a asp-action="Create">@Localizer["Maak nieuwe aan"]</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -129,13 +127,93 @@
                             @item.properties.TimeValidity
                             
                             </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
                     </tr>
                 }
             }
     </tbody>
 </table>
+<h2>@Localizer["Geef zelf verkeersincident in"]</h2>
+<p>
+    <a asp-action="Create">@Localizer["Maak nieuwe aan"]</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IconCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MagnitudeOfDelay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.From)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.To)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Delay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeValidity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model)
+
+                {
+                    <tr>
+                            <td>
+                            @Html.DisplayFor(modelItem => item.IconCategory)
+                            </td>
+                            <td>
+                            @Html.DisplayFor(modelItem => item.MagnitudeOfDelay)
+                            
+                            </td>
+                            <td>
+                            @Html.DisplayFor(modelItem => item.StartTime)
+                            
+                            </td>
+                            <td>
+                             @Html.DisplayFor(modelItem => item.EndTime)
+                            
+                            </td>
+                            <td>
+                             @Html.DisplayFor(modelItem => item.From)
+
+                           </td>
+                           <td>
+                             @Html.DisplayFor(modelItem => item.To)
+                            
+                            </td>
+                            <td>
+                             @Html.DisplayFor(modelItem => item.Length)
+                            
+                            </td>
+                            <td>
+                            @Html.DisplayFor(modelItem => item.Delay)
+                            
+                            </td>
+                            <td>
+                             @Html.DisplayFor(modelItem => item.TimeValidity)
+                            
+                            </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">@Localizer["Bewerken"]</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">@Localizer["Details"]</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">@Localizer["Verwijderen"]</a>
+                        </td>
+                    </tr>
+            }
+    </tbody>

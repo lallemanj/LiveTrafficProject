@@ -12,9 +12,11 @@ using LiveTrafficProject.Services;
 using System.Net;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Localization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LiveTrafficProject.Controllers
 {
+   
     public class PropertiesController : ApplicationController
     {
         private readonly IStringLocalizer<PropertiesController> _localizer;
@@ -26,6 +28,7 @@ namespace LiveTrafficProject.Controllers
         }
 
         // GET: Properties
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string? traffic)
         {
             if (traffic != null)
@@ -64,6 +67,7 @@ namespace LiveTrafficProject.Controllers
             return View(properties);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Properties/Create
         public IActionResult Create()
         {
@@ -73,6 +77,8 @@ namespace LiveTrafficProject.Controllers
         // POST: Properties/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,IconCategory,MagnitudeOfDelay,StartTime,EndTime,From,To,Length,Delay,TimeValidity")] Properties properties)
@@ -87,6 +93,7 @@ namespace LiveTrafficProject.Controllers
         }
 
         // GET: Properties/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -105,6 +112,7 @@ namespace LiveTrafficProject.Controllers
         // POST: Properties/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id,IconCategory,MagnitudeOfDelay,StartTime,EndTime,From,To,Length,Delay,TimeValidity")] Properties properties)
@@ -138,6 +146,7 @@ namespace LiveTrafficProject.Controllers
         }
 
         // GET: Properties/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -156,6 +165,7 @@ namespace LiveTrafficProject.Controllers
         }
 
         // POST: Properties/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)

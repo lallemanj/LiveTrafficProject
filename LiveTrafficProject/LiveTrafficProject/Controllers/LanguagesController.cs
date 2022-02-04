@@ -11,9 +11,11 @@ using LiveTrafficProject.Models;
 using Microsoft.AspNetCore.Localization;
 using LiveTrafficProject.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LiveTrafficProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class LanguagesController : ApplicationController
     {
         //private readonly IdentityContext _context;

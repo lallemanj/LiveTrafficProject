@@ -117,25 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Bewerken" xml:space="preserve">
-    <value>Modifier</value>
+  <data name="Beginscherm" xml:space="preserve">
+    <value>Écran d'accueil</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>Détails</value>
+  <data name="Klik hier" xml:space="preserve">
+    <value>Cliquer ici</value>
   </data>
-  <data name="Geef zelf verkeersincident in" xml:space="preserve">
-    <value>Saisissez votre propre incident de circulation</value>
-  </data>
-  <data name="Maak nieuwe aan" xml:space="preserve">
-    <value>Créer nouveaux</value>
-  </data>
-  <data name="Verkeersincidenten live" xml:space="preserve">
-    <value>Incidents de circulation en direct</value>
-  </data>
-  <data name="Verkeersincidenten live zoeken" xml:space="preserve">
-    <value>Recherche d'incidents de circulation en direct</value>
-  </data>
-  <data name="Verwijderen" xml:space="preserve">
-    <value>Supprimer</value>
+  <data name="Verkrijg url" xml:space="preserve">
+    <value>Obtenir l'URL</value>
   </data>
 </root>

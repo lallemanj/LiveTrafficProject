@@ -10,9 +10,11 @@ using LiveTrafficProject.Data;
 using LiveTrafficProject.Models;
 using System.Net;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LiveTrafficProject.Controllers
 {
+    [AllowAnonymous]
     public class EventsController : ApplicationController
     {
 

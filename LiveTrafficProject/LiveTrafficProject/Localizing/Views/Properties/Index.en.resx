@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Bewerken" xml:space="preserve">
-    <value>Modifier</value>
+    <value>Edit</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Détails</value>
+    <value>Details</value>
   </data>
   <data name="Geef zelf verkeersincident in" xml:space="preserve">
-    <value>Saisissez votre propre incident de circulation</value>
+    <value>Enter your own traffic incident</value>
   </data>
   <data name="Maak nieuwe aan" xml:space="preserve">
-    <value>Créer nouveaux</value>
+    <value>Create new</value>
   </data>
   <data name="Verkeersincidenten live" xml:space="preserve">
-    <value>Incidents de circulation en direct</value>
+    <value>Live traffic</value>
   </data>
   <data name="Verkeersincidenten live zoeken" xml:space="preserve">
-    <value>Recherche d'incidents de circulation en direct</value>
+    <value>Live traffic incident search</value>
   </data>
   <data name="Verwijderen" xml:space="preserve">
-    <value>Supprimer</value>
+    <value>Remove</value>
   </data>
 </root>

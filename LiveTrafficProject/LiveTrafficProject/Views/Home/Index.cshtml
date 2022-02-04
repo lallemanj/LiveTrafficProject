@@ -1,22 +1,24 @@
 ﻿@using System.Text
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = @Localizer["Beginscherm"];
 }
 
-<span id="spanMsg"></span>
 
 <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
 <script type="text/javascript" 
             src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
     </script>
 <body>
-    <button onclick="fetch();">Klik hier</button>
+    <h2>@Localizer["Beginscherm"]</h2>
+    <button onclick="fetch();">@Localizer["Klik hier"]</button>
     <ul class="msg">
        
     </ul>
-    <input type="button" id="ajaxBtn" value="Verkrijg url" />
+    <input type="button" id="ajaxBtn" value="@Localizer["Verkrijg url"]" />
     <img src="https://api.tomtom.com/traffic/map/4/tile/incidents/s0/12/1207/1539.png?t=-1&tileSize=512&key=hIQ7sERCrsAIdaBcD4I2inoY9sFjc7ms" id="i">
-    <input type="button" id="ajaxBtn2" value="Verkrijg url" />
+    <input type="button" id="ajaxBtn2" value="@Localizer["Verkrijg url"]" />
     <img src="https://api.tomtom.com/traffic/map/4/tile/flow/relative0/12/1207/1539.png?tileSize=512&key=hIQ7sERCrsAIdaBcD4I2inoY9sFjc7ms" id="a">
 
 <script type="text/javascript">

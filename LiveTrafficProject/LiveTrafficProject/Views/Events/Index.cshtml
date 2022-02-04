@@ -25,20 +25,15 @@
         </tr>
     </thead>
     <tbody>
-       @if (ViewBag.traffic1 != null)
-        {
-            @foreach (var item in ViewBag.traffic1.events)
-                    //traffic = info.incidents[0].properties.Events[0].Description
-
+            @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                            @item.Code
+                @Html.DisplayFor(modelItem => item.Code)
 
                     </td>
                     <td>
-                            @item.Description
-
+                @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -46,7 +41,6 @@
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>
-            }
         }
     </tbody>
 </table>

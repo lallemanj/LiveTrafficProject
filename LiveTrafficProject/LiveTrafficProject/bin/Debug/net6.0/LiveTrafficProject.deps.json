@@ -23,6 +23,9 @@
         "resources": {
           "fr/LiveTrafficProject.resources.dll": {
             "locale": "fr"
+          },
+          "en/LiveTrafficProject.resources.dll": {
+            "locale": "en"
           }
         }
       },

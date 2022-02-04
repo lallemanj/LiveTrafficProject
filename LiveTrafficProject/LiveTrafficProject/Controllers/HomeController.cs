@@ -14,7 +14,6 @@ using static LiveTrafficProject.Models.Root;
 
 namespace LiveTrafficProject.Controllers
 {
-    [Authorize]
     public class HomeController : ApplicationController
     {
         private readonly IStringLocalizer<HomeController> _localizer;
@@ -26,11 +25,13 @@ namespace LiveTrafficProject.Controllers
 
 
 
+        [Authorize]
         public IActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult ChangeLanguage(string id, string returnUrl)
         {
             string culture = Thread.CurrentThread.CurrentCulture.ToString();

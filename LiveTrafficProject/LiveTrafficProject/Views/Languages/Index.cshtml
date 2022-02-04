@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<LiveTrafficProject.Models.Language>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "-";
 }
 
-<h1>Index</h1>
+<h1>@Localizer["Kies jouw taalvoorkeur"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">@Localizer["Maak nieuwe aan"]</a>
 </p>
 <table class="table">
     <thead>

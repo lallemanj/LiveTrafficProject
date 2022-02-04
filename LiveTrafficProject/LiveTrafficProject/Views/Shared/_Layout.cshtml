@@ -1,5 +1,6 @@
 ﻿@using LiveTrafficProject.Services
 @using Microsoft.AspNetCore.Mvc.Localization
+
 @inject IViewLocalizer Localizer
 
 
@@ -47,11 +48,13 @@
                         }
                     </ul>
                     <partial name="_LoginPartial" />
+
                      @if (!User.Identity.IsAuthenticated)
                     {
                     <partial name="_LanguagePartial" />
                     
                     }
+                    
                 </div>
             </div>
         </nav>

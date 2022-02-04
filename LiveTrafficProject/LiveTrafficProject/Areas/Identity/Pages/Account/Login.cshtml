@@ -5,7 +5,7 @@
 @inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = @Localizer["Inloggen"];
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -13,7 +13,7 @@
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <h2>@Localizer["Meld je hier aan"]</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -35,17 +35,17 @@
                     </div>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">@Localizer["Inloggen"]</button>
                 </div>
                 <div>
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword">@Localizer["Wachtwoord vergeten?"]</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">@Localizer["Aanmelden als andere gebruiker"]</a>
                     </p>
                     <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">@Localizer["Opnieuw versturen configuratie email"]</a>
                     </p>
                 </div>
             </form>

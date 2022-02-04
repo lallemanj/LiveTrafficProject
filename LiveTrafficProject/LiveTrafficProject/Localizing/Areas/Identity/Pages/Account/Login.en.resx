@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Eigenschappen" xml:space="preserve">
-    <value>Properties</value>
+  <data name="Aanmelden als andere gebruiker" xml:space="preserve">
+    <value>Log in as another user</value>
   </data>
-  <data name="Evenementen" xml:space="preserve">
-    <value>Events</value>
+  <data name="Inloggen" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="Meld je hier aan" xml:space="preserve">
+    <value>Sign up here</value>
+  </data>
+  <data name="Opnieuw versturen configuratie email" xml:space="preserve">
+    <value>Resend configuration email</value>
+  </data>
+  <data name="Wachtwoord vergeten?" xml:space="preserve">
+    <value>Forgot your password?</value>
   </data>
 </root>

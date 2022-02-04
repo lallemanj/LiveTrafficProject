@@ -11,15 +11,18 @@ using LiveTrafficProject.Models;
 using LiveTrafficProject.Services;
 using System.Net;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Localization;
 
 namespace LiveTrafficProject.Controllers
 {
     public class PropertiesController : ApplicationController
     {
-        public PropertiesController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger)
+        private readonly IStringLocalizer<PropertiesController> _localizer;
+
+        public PropertiesController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger, IStringLocalizer<PropertiesController> localizer)
            : base(context, httpContextAccessor, logger)
         {
-
+            _localizer = localizer;
         }
 
         // GET: Properties

@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<LiveTrafficProject.Models.Properties>
-
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
     ViewData["Title"] = "Index";
 }
@@ -10,7 +11,7 @@
     <button name="button"  value="trafficBtn"  id ="traffic"  class="btn btn-outline-success"  type="submit" >Search</button>
     </form>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">@Localizer["Maak nieuwe aan"]</a>
 </p>
 <table class="table">
     <thead>

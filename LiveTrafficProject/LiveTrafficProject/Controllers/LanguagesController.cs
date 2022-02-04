@@ -10,16 +10,20 @@ using LiveTrafficProject.Data;
 using LiveTrafficProject.Models;
 using Microsoft.AspNetCore.Localization;
 using LiveTrafficProject.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace LiveTrafficProject.Controllers
 {
-    public class LanguagesController : Controller
+    public class LanguagesController : ApplicationController
     {
-        private readonly IdentityContext _context;
+        //private readonly IdentityContext _context;
+        //private readonly UserManager<LiveTrafficProjectUser> _userManager;
 
-        public LanguagesController(IdentityContext context)
+
+        public LanguagesController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger)
+            : base(context, httpContextAccessor, logger)
         {
-            _context = context;
+
         }
 
         public IActionResult ChangeLanguage(string id, string returnUrl)
@@ -34,15 +38,15 @@ namespace LiveTrafficProject.Controllers
                 CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
                 new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) });
 
-            //if (_user.Id != "-")
-            //{
-            //    _user.LanguageId = id;
-            //    Language language = _context.Language.FirstOrDefault(l => l.Id == id);
-            //    _user.Language = language;
-            //    LiveTrafficProjectUser user = _context.Users.FirstOrDefault(u => u.Id == _user.Id);
-            //    user.Language = language;
-            //    _context.SaveChanges();
-            //}
+            if (_user.Id != "-")
+            {
+                _user.LanguageId = id;
+                Language language = _context.Language.FirstOrDefault(l => l.Id == id);
+                _user.Language = language;
+                LiveTrafficProjectUser user = _context.Users.FirstOrDefault(u => u.Id == _user.Id);
+                user.Language = language;
+                _context.SaveChanges();
+            }
 
             return LocalRedirect(returnUrl);
         }

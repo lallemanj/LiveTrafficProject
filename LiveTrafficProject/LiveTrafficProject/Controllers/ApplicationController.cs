@@ -2,6 +2,7 @@
 using LiveTrafficProject.Data;
 using LiveTrafficProject.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace LiveTrafficProject.Controllers
 {
@@ -19,10 +20,6 @@ namespace LiveTrafficProject.Controllers
             _context = context;
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
-            //string? userName = _httpContextAccessor.HttpContext.User.Identity.Name;
-            //if (userName == null)
-            //    userName = "-";
-            //_user = _context.Users.FirstOrDefault(u => u.UserName == userName);
             _user = SessionUser.GetUser(httpContextAccessor.HttpContext);
         }
     }

@@ -8,6 +8,7 @@ using LiveTrafficProject.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using NETCore.MailKit.Infrastructure.Internal;
 using LiveTrafficProject.Models;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,14 +21,14 @@ builder.Services.AddDefaultIdentity<LiveTrafficProjectUser>(options => options.S
     .AddEntityFrameworkStores<IdentityContext>();
 
 
-builder.Services.AddLocalization(option => option.ResourcesPath = "Localizing");
+builder.Services.AddControllersWithViews();
+
 builder.Services.AddMvc()
-       .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+       .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
        .AddDataAnnotationsLocalization();
 
-// Add services to the container.
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddLocalization(option => option.ResourcesPath = "Localizing");
 builder.Services.AddHttpContextAccessor();
 
 
@@ -46,9 +47,21 @@ builder.Services.Configure<MailKitOptions>(options =>
     options.Security = false;  // true zet ssl or tls aan
 });
 
+//identity options
 builder.Services.Configure<IdentityOptions>(options =>
 {
+    // Password settings.
     options.Password.RequiredLength = 8;
+
+    // Lockout settings.
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
+
+    // User settings.
+    options.User.AllowedUserNameCharacters =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+    options.User.RequireUniqueEmail = false;
 });
 
 var app = builder.Build();
@@ -72,13 +85,12 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var userManager = services.GetRequiredService<UserManager<LiveTrafficProjectUser>>();
-    SeedDatacontext.Initialize(services, userManager);
+    SeedDatacontext.InitializeAsync(services, userManager);
 }
 
 var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture("nl-BE")
      .AddSupportedCultures(Language.SupportedLanguages)
      .AddSupportedUICultures(Language.SupportedLanguages);
-
 app.UseRequestLocalization(localizationOptions);
 
 app.MapRazorPages();

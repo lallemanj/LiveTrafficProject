@@ -17,20 +17,23 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using LiveTrafficProject.Data;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Localization;
 
 namespace LiveTrafficProject.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
+        private readonly IStringLocalizer<LoginModel> _localizer;
         private readonly SignInManager<LiveTrafficProjectUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly IdentityContext _dbContext;
 
-        public LoginModel(SignInManager<LiveTrafficProjectUser> signInManager, ILogger<LoginModel> logger, IdentityContext dbContext)
+        public LoginModel(SignInManager<LiveTrafficProjectUser> signInManager, ILogger<LoginModel> logger, IdentityContext dbContext ,IStringLocalizer<LoginModel> localizer)
         {
             _signInManager = signInManager;
             _logger = logger;
             _dbContext = dbContext;
+            _localizer = localizer;
         }
 
         /// <summary>

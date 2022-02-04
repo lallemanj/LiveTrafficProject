@@ -16,6 +16,8 @@ public class IdentityContext : IdentityDbContext<LiveTrafficProjectUser>
 
     public DbSet<LiveTrafficProject.Models.Properties> Properties { get; set; }
 
+    public DbSet<LiveTrafficProject.Models.Event> Event { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -26,5 +28,4 @@ public class IdentityContext : IdentityDbContext<LiveTrafficProjectUser>
 
     public DbSet<LiveTrafficProject.Models.Language> Language { get; set; }
 
-    public DbSet<LiveTrafficProject.Models.Event> Event { get; set; }
 }

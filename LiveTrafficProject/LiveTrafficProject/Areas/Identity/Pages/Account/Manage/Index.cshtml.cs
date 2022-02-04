@@ -83,9 +83,9 @@ namespace LiveTrafficProject.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber,
-                LastName = user.LastName,
                 FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = phoneNumber,
                 LanguageId = user.LanguageId
             };
             ViewData["Languages"] = Language.SystemLanguages;

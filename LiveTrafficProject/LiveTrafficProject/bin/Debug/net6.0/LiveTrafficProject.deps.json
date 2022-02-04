@@ -19,6 +19,11 @@
         },
         "runtime": {
           "LiveTrafficProject.dll": {}
+        },
+        "resources": {
+          "fr/LiveTrafficProject.resources.dll": {
+            "locale": "fr"
+          }
         }
       },
       "Humanizer.Core/2.8.26": {

@@ -29,8 +29,8 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @if (User.Identity.IsAuthenticated)
-                        {
+                       @* @if (User.Identity.IsAuthenticated)
+                        {*@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
@@ -38,20 +38,18 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Languages" asp-action="Index">Talen</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">@Localizer["Events"]</a>
-                            </li>
-                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Properties" asp-action="Index">@Localizer["Eigenschappen"]</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">@Localizer["Evenementen"]</a>
                             </li>
-                        }
+                             
+                        @*}*@
                     </ul>
                     <partial name="_LoginPartial" />
-                     @if (!User.Identity.IsAuthenticated)
+                     @if (User.Identity.IsAuthenticated)
                     {
-                    <partial name="_Language" />
+                    <partial name="_LanguagePartial" />
                     
                     }
                 </div>

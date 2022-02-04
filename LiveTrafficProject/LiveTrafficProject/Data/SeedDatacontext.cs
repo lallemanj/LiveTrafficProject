@@ -7,7 +7,7 @@ namespace LiveTrafficProject.Data
 {
     public class SeedDatacontext
     {
-    public static void Initialize(IServiceProvider serviceProvider, UserManager<LiveTrafficProjectUser> userManager)
+    public static async Task InitializeAsync(IServiceProvider serviceProvider, UserManager<LiveTrafficProjectUser> userManager)
     {
         using (var context = new IdentityContext(serviceProvider.GetRequiredService
                                                           <DbContextOptions<IdentityContext>>()))

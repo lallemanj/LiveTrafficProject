@@ -7,13 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Localizing\Views\Shared\_Layout.en.resx" />
-    <EmbeddedResource Remove="Localizing\Views\Shared\_Layout.fr.resx" />
+    <EmbeddedResource Remove="Localizing\Views\Shared\1.resx" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Localizing\Views\Shared\_Layout.en.resx" />
-    <None Include="Localizing\Views\Shared\_Layout.fr.resx" />
+    <None Include="Localizing\Views\Shared\1.resx" />
   </ItemGroup>
 
   <ItemGroup>

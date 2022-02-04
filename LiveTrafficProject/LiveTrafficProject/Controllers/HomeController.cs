@@ -2,7 +2,9 @@
 using LiveTrafficProject.Data;
 using LiveTrafficProject.Models;
 using LiveTrafficProject.Services;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net;
@@ -12,24 +14,38 @@ namespace LiveTrafficProject.Controllers
 {
     public class HomeController : ApplicationController
     {
-        public HomeController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger)
+        private readonly IStringLocalizer<HomeController> _localizer;
+        public HomeController(IdentityContext context, IHttpContextAccessor httpContextAccessor, ILogger<ApplicationController> logger, IStringLocalizer<HomeController> localizer)
             : base(context, httpContextAccessor, logger)
         {
-            client = new HttpClient();
-            client.BaseAddress = baseAddress;
+            _localizer = localizer;
         }
 
-        Uri baseAddress = new Uri("http://localhost:5209/api");
-        HttpClient client;
+
 
         public IActionResult Index()
         {
-            HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/traffic").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-            }
+ 
             return View();
+        }
+
+        public IActionResult ChangeLanguage(string id, string returnUrl)
+        {
+            string culture = Thread.CurrentThread.CurrentCulture.ToString();
+            string cultureUI = Thread.CurrentThread.CurrentUICulture.ToString();
+
+            culture = id + "-" + culture.Substring(2);
+            cultureUI = cultureUI.Substring(2);
+
+            if (culture.Length != 5) culture = cultureUI = id;
+
+            Response.Cookies.Append(
+
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) });
+
+            return LocalRedirect(returnUrl);
         }
 
         public IActionResult Privacy()
